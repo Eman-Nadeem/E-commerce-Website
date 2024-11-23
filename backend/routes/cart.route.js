@@ -1,7 +1,8 @@
 import express from "express";
-import { protectRoute } from "../middleware/auth.middleware";
+import { protectRoute } from "../middleware/auth.middleware.js";
+import { addToCart, removeAllFromCart, updateCartQuantity, getCartProducts } from "../controllers/cart.controller.js";
 
-router=express.Router()
+const router=express.Router()
 
 router.post('/', protectRoute, addToCart)
 router.delete('/', protectRoute, removeAllFromCart)
