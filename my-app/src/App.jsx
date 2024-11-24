@@ -22,8 +22,9 @@ const App = () => {
               <div className='absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_top,rgba(128,0,128,0.3)_0%,rgba(75,0,130,0.2)_45%,rgba(0,0,0,0.1)_100%)]' />
           </div>
       </div> */}
-
-      <div className='relative z-50 pt-20'>
+       
+       {/* pt-20 adjusted to pt10 */}
+      <div className='relative z-50 pt-10'>
         <Navbar/>
         <Routes>
           <Route path="/" element={<HomePage />} />
