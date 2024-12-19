@@ -7,6 +7,7 @@ import Navbar from './components/Navbar'
 import { Toaster } from 'react-hot-toast'
 import useUserStore  from './stores/useUserStore.js'
 import LoadingSpinner from './components/LoadingSpinner.jsx'
+import AdminPage from './pages/AdminPage.jsx'
 
 const App = () => {
   const {user, checkAuth, checkingAuth}=useUserStore()
@@ -43,6 +44,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/signup" element={!user? <SignUpPage /> : <Navigate to={'/'} />} />
           <Route path="/login" element={!user?  <LoginPage /> : <Navigate to={'/'} />} />
+          <Route path="/secret-dashboard" element={user?.role==="admin"? <AdminPage/> : <Navigate to={'/login'} />} />
           {/* if user state from userStore is not null then login page is shown if user is logged in then HomePage is shown */}
         </Routes>
       </div>

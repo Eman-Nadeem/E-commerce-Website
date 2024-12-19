@@ -21,7 +21,7 @@ const useUserStore=create((set, get)=>({
       set({user: res.data.user, loading: false}) //backend responds the res is set to the user and loading set to false
     }catch(error){
       set({loading: false}) //if there is an error loading set to false
-      toast.error(error.response.data.message || 'An error occurred') //display the error message from the backend or a generic error message
+      toast.error(error.response?.data?.message || 'An error occurred') //display the error message from the backend or a generic error message
     }
   },
 
@@ -33,7 +33,7 @@ const useUserStore=create((set, get)=>({
       set({user: res.data, loading: false}) //backend responds the res is set to the user which was null initially and loading set to false
     }catch(error){
       set({loading: false}) //if there is an error loading set to false
-      toast.error(error.response.data.message || 'An error occurred') //display the error message from the backend or a generic error message
+      toast.error(error.response?.data?.message || 'An error occurred') //display the error message from the backend or a generic error message
     }
   },
 
@@ -41,6 +41,7 @@ const useUserStore=create((set, get)=>({
     try{
       await axios.post("/auth/logout")
       set({user: null})
+      console.log(user)
     }catch(error){
       toast.error(error.response?.data?.message || "An error occured during Logout, Try again!")
     }
@@ -52,6 +53,7 @@ const useUserStore=create((set, get)=>({
     try{
       const response= await axios.get("/auth/profile") //returns user profile to us
       set({user: response.data, checkingAuth: false})
+      console.log(user)
     }catch(error){
       set({checkingAuth: false, user: null})
     }
